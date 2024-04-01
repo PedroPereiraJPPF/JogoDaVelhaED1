@@ -20,6 +20,7 @@ public class App extends Application {
 
     private Table table;
     private Button[][] buttons;
+    private Button replayButton;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -52,7 +53,17 @@ public class App extends Application {
             }
         });
 
-        HBox hbox = new HBox(10, undoButton);
+        replayButton = new Button("Desfazer");
+        undoButton.setOnAction(event -> {
+            try {
+                handleReplayButtonClick();
+            } catch (Exception e) {
+               System.out.println(e.getMessage());
+            }
+        });
+        replayButton.setDisable(true);
+
+        HBox hbox = new HBox(10, undoButton, replayButton);
         hbox.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(new VBox(10, gridPane, hbox), 250, 250);
@@ -69,6 +80,7 @@ public class App extends Application {
             updateButton(button);
             
             if (table.checkWinner()) {
+                replayButton.setDisable(false);
                 showAlert("Jogador " + (table.getActualPlayer() == 0 ? "1" : "2") + " ganhou!");
             } else if (table.getTurn() == 8) {
                 showAlert("Jogo empatado!");
@@ -84,6 +96,10 @@ public class App extends Application {
     private void handleUndoButtonClick() throws Exception {
         table.undoMove();
         updateButtons();
+    }
+
+    private void handleReplayButtonClick() {
+        table.replayMove();
     }
 
     private void updateButtons() {

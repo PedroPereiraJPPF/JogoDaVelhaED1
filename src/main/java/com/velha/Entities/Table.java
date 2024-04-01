@@ -39,11 +39,7 @@ public class Table implements Serializable {
 
     // muda o player atual
     public int changePlayer() {
-        if (this.actualPlayer == 0) {
-            this.actualPlayer = 1;
-        } else {
-            this.actualPlayer = 0;
-        }
+        this.actualPlayer = this.turn % 2;
 
         return this.actualPlayer;
     }
@@ -52,35 +48,19 @@ public class Table implements Serializable {
         return this.actualPlayer;
     }
 
-    public boolean play(int linha, int coluna) {
-        if (this.actualPlayer == 0) {
-            return this.playCircle(linha, coluna);
-        }
-
-        return this.playCross(linha, coluna);
-    }
-
-    private boolean playCircle(int i, int j) {
+    public boolean play(int i, int j) {
         if (this.tableMatriz[i][j] != 0) {
             return false;
         }
 
         this.saveNewPlay();
 
-        this.tableMatriz[i][j] = 1;
-        
-        return true;
-    }
-
-    private boolean playCross(int i, int j) {
-        if (this.tableMatriz[i][j] != 0) {
-            return false;
+        if (this.actualPlayer == 0){
+            this.tableMatriz[i][j] = 1;
+        } else{
+            this.tableMatriz[i][j] = 2;
         }
 
-        this.saveNewPlay();
-
-        this.tableMatriz[i][j] = 2;
-        
         return true;
     }
 
@@ -115,6 +95,10 @@ public class Table implements Serializable {
         } else {
             throw new Exception("Sem jogadas para voltar");
         }
+    }
+
+    public void replayMove() {
+        
     }
 
     // salva o estado atual da tabela
