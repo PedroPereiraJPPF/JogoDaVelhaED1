@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.velha.controller.SalvarPartidasController">
+   <children>
+      <Text layoutX="192.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salvar Partida">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+      <Group layoutX="31.0" layoutY="94.0">
+         <children>
+            <Text layoutX="6.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jogador 1" />
+            <TextField fx:id="j1" layoutY="10.0" promptText="Nome para salvamento" />
+         </children>
+      </Group>
+      <Group layoutX="32.0" layoutY="158.0">
+         <children>
+            <Text layoutX="6.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jogador 2" />
+            <TextField fx:id="j2" layoutY="10.0" promptText="Nome para salvamento" />
+         </children>
+      </Group>
+      <Group layoutX="311.5788879394531" layoutY="95.82109832763672">
+         <children>
+            <GridPane fx:id="gridPane" hgap="10.0" layoutX="25.421112060546875" layoutY="15.178901672363281" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="195.0" prefWidth="203.0" vgap="10.0">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <Text fx:id="motivacional" layoutY="26.47840118408203" rotate="-15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Partida Disputada!">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+      <Group layoutX="38.0" layoutY="284.0">
+         <children>
+            <Button fx:id="submeter" mnemonicParsing="false" onAction="#submit" text="Submeter" />
+            <Button fx:id="apagar" layoutY="43.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="67.0" text="Apagar" />
+         </children>
+      </Group>
+   </children>
+</Pane>

@@ -106,17 +106,21 @@ public class SinglyLinkedList<T> implements LinkedListInterface<T> {
             return null;
         }
 
-        T removedElement = this.tail.element;
-        SinglyListNode<T> beforeLast = null;
+        T removedElement = tail.element; 
         SinglyListNode<T> iterator = this.head;
 
-        while (iterator != this.tail) {
-            beforeLast = iterator;
+        while (iterator.next != this.tail || iterator.next == null) {
             iterator = iterator.next;
         }
 
-        beforeLast.next = null;
-        this.tail = beforeLast;
+        if (size == 1){
+            head = null;
+            tail = null;
+        } else {
+        iterator.next = null;
+        this.tail = iterator;
+        size--;
+        }
 
         return removedElement;
     }
@@ -159,6 +163,11 @@ public class SinglyLinkedList<T> implements LinkedListInterface<T> {
             System.out.println(iterator.element);
             iterator = iterator.next;
         }
+    }
+
+    @Override
+    public int size() {
+        return size;
     }
     
 }

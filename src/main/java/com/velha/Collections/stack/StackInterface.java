@@ -2,6 +2,7 @@ package com.velha.Collections.stack;
 
 public interface StackInterface <T>
 {
+    int size();
     boolean isEmpty();
     boolean isFull();
 

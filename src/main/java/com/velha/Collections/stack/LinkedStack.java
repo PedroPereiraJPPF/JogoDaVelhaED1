@@ -35,5 +35,10 @@ public class LinkedStack<T> implements StackInterface<T> {
     public void push(T element) throws Exception {
         this.list.addLast(element);
     }
+
+    @Override
+    public int size() {
+        return this.list.size();
+    }
     
 }

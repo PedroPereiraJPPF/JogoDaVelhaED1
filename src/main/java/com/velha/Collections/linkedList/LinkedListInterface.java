@@ -14,4 +14,5 @@ public interface LinkedListInterface<T> {
         T removeLast();
         T remove(T element);
         boolean isEmpty();
+        int size();
 }

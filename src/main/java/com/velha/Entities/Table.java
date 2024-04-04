@@ -1,7 +1,9 @@
 package com.velha.Entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import com.velha.Collections.Collections_Certas.list.DoubleLinkedList;
 import com.velha.Collections.stack.LinkedStack;
 import com.velha.Collections.stack.StackInterface;
 
@@ -87,18 +89,31 @@ public class Table implements Serializable {
     }
 
     // serve para voltar ao movimento anterior
-    public void undoMove() throws Exception {
-        if (!playsStack.isEmpty()) {
+    public void undoMove() {
+        try {
             this.tableMatriz = playsStack.pop();
             this.turn--;
             this.changePlayer();
-        } else {
-            throw new Exception("Sem jogadas para voltar");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    public void replayMove() {
-        
+    public List<Integer[][]> replayMoves() {
+        List<Integer[][]> movesOrder = new DoubleLinkedList<>();
+        StackInterface<Integer[][]> playsStackCopy = playsStack;
+
+        try {
+            while(playsStackCopy.size() >= 1) {
+                movesOrder.add(playsStackCopy.pop());
+            }
+
+            return movesOrder;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return movesOrder;
     }
 
     // salva o estado atual da tabela

@@ -164,4 +164,9 @@ public class DoubleLinkedList<T> implements LinkedListInterface<T> {
     public boolean isEmpty() {
         return this.size == 0;
     }
+
+    @Override
+    public int size() {
+        return size;
+    }
 }

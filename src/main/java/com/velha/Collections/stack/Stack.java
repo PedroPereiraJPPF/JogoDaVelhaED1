@@ -13,6 +13,11 @@ public class Stack<T> implements StackInterface<T> {
     }
 
     @Override
+    public int size() {
+        return size;
+    }
+
+    @Override
     public boolean isEmpty() {
         return position == -1;
     }
