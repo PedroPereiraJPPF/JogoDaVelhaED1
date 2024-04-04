@@ -1,7 +1,7 @@
-package com.velha.Collections.stack;
+package com.velha.collections.stack;
 
-import com.velha.Collections.linkedList.LinkedListInterface;
-import com.velha.Collections.linkedList.singlyLinkedList.SinglyLinkedList;
+import com.velha.collections.linkedList.LinkedListInterface;
+import com.velha.collections.linkedList.singlyLinkedList.SinglyLinkedList;
 
 public class LinkedStack<T> implements StackInterface<T> {
     LinkedListInterface<T> list;

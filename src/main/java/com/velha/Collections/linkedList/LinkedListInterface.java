@@ -1,4 +1,4 @@
-package com.velha.Collections.linkedList;
+package com.velha.collections.linkedList;
 
 public interface LinkedListInterface<T> {
         void addFirst(T element);

@@ -1,6 +1,6 @@
-package com.velha.Collections.linkedList.doubleLinkedList;
+package com.velha.collections.linkedList.doubleLinkedList;
 
-import com.velha.Collections.linkedList.LinkedListInterface;
+import com.velha.collections.linkedList.LinkedListInterface;
 
 public class DoubleLinkedList<T> implements LinkedListInterface<T> {
     DoubleLinkedNode<T> head, tail;

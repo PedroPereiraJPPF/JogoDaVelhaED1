@@ -1,8 +1,10 @@
-package com.velha.Collections.linkedList.singlyLinkedList;
+package com.velha.collections.linkedList.singlyLinkedList;
 
-import com.velha.Collections.linkedList.LinkedListInterface;
+import java.io.Serializable;
 
-public class SinglyLinkedList<T> implements LinkedListInterface<T> {
+import com.velha.collections.linkedList.LinkedListInterface;
+
+public class SinglyLinkedList<T> implements LinkedListInterface<T>, Serializable {
     private SinglyListNode<T> head, tail;
     private int size;
 
@@ -75,13 +77,17 @@ public class SinglyLinkedList<T> implements LinkedListInterface<T> {
     @Override
     public T search(T crit) throws Exception {
         if (isEmpty()) {
-            throw new Exception("Lista vazia");
+            return null;
         }
 
         SinglyListNode<T> iterator = this.head;
 
-        while(!iterator.element.equals(crit)) {
+        while(!iterator.element.equals(crit) && !iterator.next.equals(null)) {
             iterator = iterator.next;
+        }
+
+        if (!iterator.next.equals(null)) {
+            return null;
         }
 
         return iterator.element;

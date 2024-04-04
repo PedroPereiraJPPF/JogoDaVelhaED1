@@ -1,4 +1,4 @@
-package com.velha.Collections.queue;
+package com.velha.collections.queue;
 
 public class Queue<T> implements QueueInterface<T> {
     private T[] array;

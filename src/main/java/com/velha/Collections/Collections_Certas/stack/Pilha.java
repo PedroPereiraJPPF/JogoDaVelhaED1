@@ -1,4 +1,4 @@
-package com.velha.Collections.Collections_Certas.stack;
+package com.velha.collections.collections_Certas.stack;
 
 public class Pilha<T> implements InterfacePilha<T>{
 

@@ -1,7 +1,7 @@
-package com.velha.Collections.queue;
+package com.velha.collections.queue;
 
-import com.velha.Collections.linkedList.LinkedListInterface;
-import com.velha.Collections.linkedList.singlyLinkedList.SinglyLinkedList;
+import com.velha.collections.linkedList.LinkedListInterface;
+import com.velha.collections.linkedList.singlyLinkedList.SinglyLinkedList;
 
 public class LinkedQueue<T> implements QueueInterface<T> {
     private LinkedListInterface<T> list;

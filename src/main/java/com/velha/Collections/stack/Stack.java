@@ -1,4 +1,4 @@
-package com.velha.Collections.stack;
+package com.velha.collections.stack;
 
 public class Stack<T> implements StackInterface<T> {
     private T[] array;

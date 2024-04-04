@@ -1,4 +1,4 @@
-package com.velha.Collections.queue;
+package com.velha.collections.queue;
 
 public interface QueueInterface<T> {
     void add(T element) throws Exception;

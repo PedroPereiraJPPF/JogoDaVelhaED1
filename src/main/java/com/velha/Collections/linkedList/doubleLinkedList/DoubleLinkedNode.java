@@ -1,4 +1,4 @@
-package com.velha.Collections.linkedList.doubleLinkedList;
+package com.velha.collections.linkedList.doubleLinkedList;
 
 public class DoubleLinkedNode<T> {
     public T element;

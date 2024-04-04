@@ -1,6 +1,8 @@
-package com.velha.Collections.linkedList.singlyLinkedList;
+package com.velha.collections.linkedList.singlyLinkedList;
 
-public class SinglyListNode<T> {
+import java.io.Serializable;
+
+public class SinglyListNode<T> implements Serializable {
     public T element;
     public SinglyListNode<T> next;
 
