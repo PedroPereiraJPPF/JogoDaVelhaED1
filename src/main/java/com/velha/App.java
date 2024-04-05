@@ -26,7 +26,7 @@ public class App extends Application {
         setStage(stage);
         stage.setTitle("Jogo do Novo");
         stage.show();
-        telaJogoDaVelha();
+        telaInicio();
     }
 
     public void setStage(Stage newStage) {
@@ -64,8 +64,9 @@ public class App extends Application {
     }
 
     public static void telaInicio() {
-        /*
         try {
+            table = null;
+
             FXMLLoader loader = new FXMLLoader(App.class.getResource("TelaInicio.fxml"));
             Parent root = loader.load();
 
@@ -74,7 +75,6 @@ public class App extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        */
     }
 
     public static Table getTable(){

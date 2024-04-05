@@ -82,11 +82,11 @@ public class SinglyLinkedList<T> implements LinkedListInterface<T>, Serializable
 
         SinglyListNode<T> iterator = this.head;
 
-        while(!iterator.element.equals(crit) && !iterator.next.equals(null)) {
+        while(!iterator.element.equals(crit) && !(iterator.next == null)) {
             iterator = iterator.next;
         }
 
-        if (!iterator.next.equals(null)) {
+        if (!(iterator.next == null)) {
             return null;
         }
 

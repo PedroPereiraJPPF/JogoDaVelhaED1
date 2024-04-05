@@ -1,17 +1,16 @@
 package com.velha.controller;
 
-import java.io.IOException;
 import java.util.Random;
 
 import com.velha.App;
 import com.velha.Entities.Jogador;
+import com.velha.Entities.Partida;
 import com.velha.Entities.Table;
 import com.velha.arquivo.ArchiveManager;
 import com.velha.collections.linkedList.singlyLinkedList.SinglyLinkedList;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -81,19 +80,21 @@ public class SalvarPartidasController {
     @FXML TextField j2;
     
     public void submit() {
-        
-        salvarJogadores();
-    }
-
-    private void salvarJogadores() {
-        ArchiveManager<Jogador> playerManager = new ArchiveManager<>();
-
         if (j1.getText() == "") {
             j1.setText("reservado1");
         }
         if (j2.getText() == "") {
             j2.setText("reservado2");
         }
+
+        salvarJogadores();
+        salvarPartida();
+
+        App.telaInicio();
+    }
+
+    private void salvarJogadores() {
+        ArchiveManager<Jogador> playerManager = new ArchiveManager<>();
 
         SinglyLinkedList<Jogador> rankingList;
 
@@ -106,16 +107,49 @@ public class SalvarPartidasController {
             if (jogador1 == null) {
                 jogador1 = new Jogador(j1.getText(), (vencedor1.isVisible() ? 1 : 0));
 
+                // TODO Modificar esse addlast pra ordenar
                 rankingList.addLast(jogador1);
-
-                playerManager.salvarEmBinario(rankingList, "Ranking.bin");
-
             } else {
                 jogador1.incrementPartidasJogadas();
-                jogador1.incrementPontuacao();
 
-                playerManager.salvarEmBinario(rankingList, "Ranking.bin");
+                if (vencedor1.isVisible()) {
+                    jogador1.incrementPontuacao();
+                }
             }
+
+            if (jogador2 == null) {
+                jogador2 = new Jogador(j2.getText(), (vencedor2.isVisible() ? 1 : 0));
+
+                // TODO Modificar esse addlast pra ordenar
+                rankingList.addLast(jogador2);
+            } else {
+                jogador2.incrementPartidasJogadas();
+
+                if (vencedor2.isVisible()) {
+                    jogador2.incrementPontuacao();
+                }
+            }
+
+            playerManager.salvarEmBinario(rankingList, "Ranking.bin");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void salvarPartida() {
+        ArchiveManager<Partida> tableManager = new ArchiveManager<>();
+
+        Partida partida = new Partida(table, j1.getText(), j2.getText());
+
+        SinglyLinkedList<Partida> partidasList;
+
+        try {
+            partidasList = tableManager.lerBinario("Partidas.bin");
+
+            partidasList.addLast(partida);
+
+            tableManager.salvarEmBinario(partidasList, "Partidas.bin");
 
         } catch (Exception e) {
             e.printStackTrace();
