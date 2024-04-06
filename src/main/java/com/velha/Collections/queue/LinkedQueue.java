@@ -1,9 +1,11 @@
 package com.velha.collections.queue;
 
+import java.io.Serializable;
+
 import com.velha.collections.linkedList.LinkedListInterface;
 import com.velha.collections.linkedList.singlyLinkedList.SinglyLinkedList;
 
-public class LinkedQueue<T> implements QueueInterface<T> {
+public class LinkedQueue<T> implements QueueInterface<T>, Serializable {
     private LinkedListInterface<T> list;
 
     public LinkedQueue() {
@@ -35,5 +37,9 @@ public class LinkedQueue<T> implements QueueInterface<T> {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'isFull'");
     }
-    
+
+    @Override
+    public int size() {
+        return list.size();
+    }    
 }

@@ -77,6 +77,18 @@ public class App extends Application {
         }
     }
 
+    public static void telaRanking() {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("TelaRanking.fxml"));
+            Parent root = loader.load();
+
+            Scene ranking = new Scene(root);
+            stage.setScene(ranking);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static Table getTable(){
         return table;
     }

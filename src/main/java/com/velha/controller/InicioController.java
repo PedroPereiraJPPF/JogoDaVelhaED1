@@ -8,7 +8,7 @@ public class InicioController {
     }
 
     public void mostrarRanking() {
-
+        App.telaRanking();
     }
 
     public void mostrarReplay() {

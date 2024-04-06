@@ -1,8 +1,9 @@
 package com.velha.Entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Partida {
+public class Partida implements Serializable{
     private Table table;
     private String jogador1;
     private String jogador2;

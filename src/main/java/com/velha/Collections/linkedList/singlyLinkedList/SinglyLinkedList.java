@@ -3,6 +3,8 @@ package com.velha.collections.linkedList.singlyLinkedList;
 import java.io.Serializable;
 
 import com.velha.collections.linkedList.LinkedListInterface;
+import com.velha.collections.queue.LinkedQueue;
+import com.velha.collections.queue.QueueInterface;
 
 public class SinglyLinkedList<T> implements LinkedListInterface<T>, Serializable {
     private SinglyListNode<T> head, tail;
@@ -54,6 +56,32 @@ public class SinglyLinkedList<T> implements LinkedListInterface<T>, Serializable
         }
 
         iterator.next = new SinglyListNode<T>(element, iterator.next);
+    }
+
+    public T get(int post) throws Exception {
+        if (post > size) {
+            throw new Exception();
+        }
+
+        SinglyListNode<T> iterator = head;
+        for (int i = 0; i < post; i++) {
+            iterator = iterator.next;
+        }
+
+        return iterator.element;
+    }
+
+    public void set(T element, int post) throws Exception {
+        if (post > size) {
+            throw new Exception();
+        }
+
+        SinglyListNode<T> iterator = head;
+        for (int i = 0; i < post; i++) {
+            iterator = iterator.next;
+        }
+
+        iterator.element = element;
     }
 
     @Override
@@ -175,5 +203,19 @@ public class SinglyLinkedList<T> implements LinkedListInterface<T>, Serializable
     public int size() {
         return size;
     }
-    
+
+    public QueueInterface<T> toQueueInterface() {
+        QueueInterface<T> queue = new LinkedQueue<>();
+        SinglyListNode<T> iterator = this.head;
+
+        while(iterator != null) {
+            try {
+                queue.add(iterator.element);
+                iterator = iterator.next;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return queue;
+    }    
 }

@@ -60,5 +60,10 @@ public class Queue<T> implements QueueInterface<T> {
     public boolean isFull() {
         return ((last + 1) % size == first);
     }
+
+    @Override
+    public int size() {
+       return this.size;
+    }
     
 }

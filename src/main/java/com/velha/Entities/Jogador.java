@@ -3,6 +3,7 @@ package com.velha.Entities;
 import java.io.Serializable;
 
 public class Jogador implements Serializable{
+    private int colocacao;
     private String nome;
     private int pontuacao;
     private int partidasJogadas;
@@ -19,6 +20,10 @@ public class Jogador implements Serializable{
 
     public Jogador () {}
 
+    public int getColocacao() {
+        return colocacao;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -29,6 +34,10 @@ public class Jogador implements Serializable{
 
     public int getPartidasJogadas() {
         return partidasJogadas;
+    }
+
+    public void setColocacao(int colocacao) {
+        this.colocacao = colocacao;
     }
 
     public void setNome(String nome) {

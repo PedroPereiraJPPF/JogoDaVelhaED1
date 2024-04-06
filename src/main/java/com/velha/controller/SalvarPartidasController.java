@@ -7,6 +7,8 @@ import com.velha.Entities.Jogador;
 import com.velha.Entities.Partida;
 import com.velha.Entities.Table;
 import com.velha.arquivo.ArchiveManager;
+import com.velha.collections.collections_Certas.stack.InterfacePilha;
+import com.velha.collections.collections_Certas.stack.PilhaEncadeada;
 import com.velha.collections.linkedList.singlyLinkedList.SinglyLinkedList;
 
 import javafx.fxml.FXML;
@@ -107,7 +109,6 @@ public class SalvarPartidasController {
             if (jogador1 == null) {
                 jogador1 = new Jogador(j1.getText(), (vencedor1.isVisible() ? 1 : 0));
 
-                // TODO Modificar esse addlast pra ordenar
                 rankingList.addLast(jogador1);
             } else {
                 jogador1.incrementPartidasJogadas();
@@ -120,7 +121,6 @@ public class SalvarPartidasController {
             if (jogador2 == null) {
                 jogador2 = new Jogador(j2.getText(), (vencedor2.isVisible() ? 1 : 0));
 
-                // TODO Modificar esse addlast pra ordenar
                 rankingList.addLast(jogador2);
             } else {
                 jogador2.incrementPartidasJogadas();
@@ -129,6 +129,8 @@ public class SalvarPartidasController {
                     jogador2.incrementPontuacao();
                 }
             }
+
+            sort(rankingList);
 
             playerManager.salvarEmBinario(rankingList, "Ranking.bin");
 
@@ -139,21 +141,56 @@ public class SalvarPartidasController {
 
     public void salvarPartida() {
         ArchiveManager<Partida> tableManager = new ArchiveManager<>();
-
+        
         Partida partida = new Partida(table, j1.getText(), j2.getText());
 
-        SinglyLinkedList<Partida> partidasList;
-
+        SinglyLinkedList<Partida> partidasList = new SinglyLinkedList<>();
+        
         try {
             partidasList = tableManager.lerBinario("Partidas.bin");
 
             partidasList.addLast(partida);
 
             tableManager.salvarEmBinario(partidasList, "Partidas.bin");
-
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
+    }
+
+    public SinglyLinkedList<Jogador> sort(SinglyLinkedList<Jogador> list) {
+        InterfacePilha<Integer> h = new PilhaEncadeada<>();
+        int hi, j;
+        Jogador comp;
+    
+        try {
+        h.push(1);
+    
+            while (h.peek() < list.size()) {
+                    h.push(((3 * h.peek()) + 1));
+            }
+    
+            while (h.peek() > 1) {
+                hi = h.pop() / 3;
+    
+                for (int i = hi; i < list.size(); i++ ) {
+                    comp = list.get(i);
+                    j = i - hi;
+
+                    while ((j >= 0) && (comp.getPontuacao() < list.get(j).getPontuacao())) {
+                        list.set(list.get(j), (j + hi));
+                        j = j - hi;
+                    }
+
+                    list.set(comp, j + hi);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
     }
 
     public void delete() {

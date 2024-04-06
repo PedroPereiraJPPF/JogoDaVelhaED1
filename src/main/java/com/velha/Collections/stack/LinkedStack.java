@@ -1,9 +1,11 @@
 package com.velha.collections.stack;
 
+import java.io.Serializable;
+
 import com.velha.collections.linkedList.LinkedListInterface;
 import com.velha.collections.linkedList.singlyLinkedList.SinglyLinkedList;
 
-public class LinkedStack<T> implements StackInterface<T> {
+public class LinkedStack<T> implements StackInterface<T>, Serializable {
     LinkedListInterface<T> list;
 
     public LinkedStack() {
