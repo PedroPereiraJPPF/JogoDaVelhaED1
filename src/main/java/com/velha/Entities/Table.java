@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.velha.collections.Collections_Certas.list.DoubleLinkedList;
+import com.velha.collections.linkedList.singlyLinkedList.SinglyLinkedList;
 import com.velha.collections.stack.LinkedStack;
 import com.velha.collections.stack.StackInterface;
 
@@ -11,7 +12,8 @@ public class Table implements Serializable {
     private Integer[][] tableMatriz;
     private int actualPlayer; // esse valor pode ser um ou zero 
     private int turn;
-    private StackInterface<Integer[][]> playsStack;
+    private LinkedStack<Integer[][]> playsStack;
+    private DoubleLinkedList<Integer[][]> replayList;
 
     public Table(int n) {
         this.actualPlayer = this.turn = 0;
@@ -76,13 +78,15 @@ public class Table implements Serializable {
         for (int i = 0; i < n; i++) {
             if ((this.tableMatriz[i][0] == value && this.tableMatriz[i][1] == value && this.tableMatriz[i][2] == value) ||
                 (this.tableMatriz[0][i] == value && this.tableMatriz[1][i] == value && this.tableMatriz[2][i] == value)) {
-                return true;
+                    this.saveNewPlay();
+                    return true;
             }
         }
 
         if ((this.tableMatriz[0][0] == value && this.tableMatriz[1][1] == value && this.tableMatriz[2][2] == value) ||
             (this.tableMatriz[0][2] == value && this.tableMatriz[1][1] == value && this.tableMatriz[2][0] == value)) {
-            return true;
+                this.saveNewPlay();
+                return true;
         }
 
         return false;
@@ -92,6 +96,7 @@ public class Table implements Serializable {
     public void undoMove() {
         try {
             this.tableMatriz = playsStack.pop();
+            replayList.removeLast();
             this.turn--;
             this.changePlayer();
         } catch (Exception e) {
@@ -99,27 +104,17 @@ public class Table implements Serializable {
         }
     }
 
-    public List<Integer[][]> replayMoves() {
-        List<Integer[][]> movesOrder = new DoubleLinkedList<>();
-        StackInterface<Integer[][]> playsStackCopy = playsStack;
-
-        try {
-            while(playsStackCopy.size() >= 1) {
-                movesOrder.add(playsStackCopy.pop());
-            }
-
-            return movesOrder;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return movesOrder;
+    public SinglyLinkedList<Integer[][]> replayMoves() {
+        return playsStack.toLinkedList();
     }
 
     // salva o estado atual da tabela
     private void saveNewPlay() {
         try {
-            playsStack.push(this.copyState(this.tableMatriz));
+            Integer[][] copy = this.copyState(this.tableMatriz);
+
+            playsStack.push(copy);
+            replayList.add(copy);
         } catch (Exception e) {
             e.printStackTrace();
         }

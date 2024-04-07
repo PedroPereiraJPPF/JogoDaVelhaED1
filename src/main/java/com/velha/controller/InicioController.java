@@ -12,6 +12,6 @@ public class InicioController {
     }
 
     public void mostrarReplay() {
-
+        App.telaReplay();
     }
 }

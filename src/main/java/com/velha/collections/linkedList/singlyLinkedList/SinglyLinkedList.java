@@ -63,6 +63,14 @@ public class SinglyLinkedList<T> implements LinkedListInterface<T>, Serializable
             throw new Exception();
         }
 
+        if (post == 0) {
+            return this.head.element;
+        }
+
+        if (post == size - 1) {
+            return this.tail.element;
+        }
+
         SinglyListNode<T> iterator = head;
         for (int i = 0; i < post; i++) {
             iterator = iterator.next;
@@ -143,18 +151,20 @@ public class SinglyLinkedList<T> implements LinkedListInterface<T>, Serializable
         T removedElement = tail.element; 
         SinglyListNode<T> iterator = this.head;
 
-        while (iterator.next != this.tail || iterator.next == null) {
+        if (size == 1) {
+            this.head = this.tail = null;
+            size--;
+            return removedElement;
+        }
+
+        while (iterator.next != this.tail && iterator.next != null) {
             iterator = iterator.next;
         }
 
-        if (size == 1){
-            head = null;
-            tail = null;
-        } else {
         iterator.next = null;
         this.tail = iterator;
         size--;
-        }
+
 
         return removedElement;
     }

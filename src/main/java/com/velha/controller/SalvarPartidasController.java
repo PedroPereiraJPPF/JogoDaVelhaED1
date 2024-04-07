@@ -106,8 +106,6 @@ public class SalvarPartidasController {
             Jogador jogador1 = rankingList.search(new Jogador(j1.getText()));
             Jogador jogador2 = rankingList.search(new Jogador(j2.getText()));
 
-            // System.out.println(jogador1.getNome());
-
             if (jogador1 == null) {
                 jogador1 = new Jogador(j1.getText(), (vencedor1.isVisible() ? 1 : 0));
 

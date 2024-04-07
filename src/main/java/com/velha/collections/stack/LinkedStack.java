@@ -42,5 +42,10 @@ public class LinkedStack<T> implements StackInterface<T>, Serializable {
     public int size() {
         return this.list.size();
     }
+
+    public SinglyLinkedList<T> toLinkedList()
+    {
+        return (SinglyLinkedList<T>) this.list;
+    }
     
 }
