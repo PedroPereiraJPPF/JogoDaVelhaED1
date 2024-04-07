@@ -20,8 +20,10 @@ public class ArchiveManager<T> {
         public SinglyLinkedList<T> lerBinario(String nomeArquivo) throws IOException, ClassNotFoundException {
             try {
                 ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(nomeArquivo));
+                SinglyLinkedList<T> list = (SinglyLinkedList<T>) inputStream.readObject();
+                inputStream.close();
 
-                return (SinglyLinkedList<T>) inputStream.readObject();
+                return list;
             } catch (Exception e) {
                 return new SinglyLinkedList<T>();
             }

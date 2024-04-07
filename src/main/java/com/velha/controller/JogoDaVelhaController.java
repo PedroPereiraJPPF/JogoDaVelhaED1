@@ -77,6 +77,7 @@ public class JogoDaVelhaController {
 
         button.setText(player == 0 ? "O" : "X");
         button.setDisable(true);
+        button.setOpacity(0.99);
     }
 
     private void blockAll(){

@@ -12,12 +12,26 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.velha.controller.SalvarPartidasController">
    <children>
+      <Pane layoutX="35.0" layoutY="-5.0" prefHeight="410.0" prefWidth="35.0" style="-fx-background-color: #9e22ff; -fx-border-color: #000000;" />
+      <Pane layoutX="105.0" layoutY="-5.0" prefHeight="410.0" prefWidth="35.0" style="-fx-background-color: #9e22ff; -fx-border-color: #000000;" />
+      <Pane layoutX="-5.0" layoutY="32.0" prefHeight="35.0" prefWidth="610.0" style="-fx-background-color: #9e22ff; -fx-border-color: #000000;">
+         <children>
+            <Pane layoutX="41.0" layoutY="-3.0" prefHeight="42.0" prefWidth="33.0" style="-fx-background-color: #9e22ff;" />
+            <Pane layoutX="111.0" layoutY="-3.0" prefHeight="42.0" prefWidth="33.0" style="-fx-background-color: #9e22ff;" />
+         </children>
+      </Pane>
+      <Pane layoutX="-5.0" layoutY="116.0" prefHeight="35.0" prefWidth="610.0" style="-fx-background-color: #9e22ff; -fx-border-color: #000000;">
+         <children>
+            <Pane layoutX="41.0" layoutY="-3.0" prefHeight="42.0" prefWidth="33.0" style="-fx-background-color: #9e22ff;" />
+            <Pane layoutX="111.0" layoutY="-3.0" prefHeight="42.0" prefWidth="33.0" style="-fx-background-color: #9e22ff;" />
+         </children>
+      </Pane>
       <Text layoutX="192.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salvar Partida">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Group layoutX="31.0" layoutY="94.0">
+      <Group layoutX="33.0" layoutY="139.0">
          <children>
             <Text layoutX="6.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jogador 1" />
             <TextField fx:id="j1" layoutY="10.0" promptText="Nome para salvamento" />
@@ -28,7 +42,7 @@
             </Text>
          </children>
       </Group>
-      <Group layoutX="32.0" layoutY="158.0">
+      <Group layoutX="34.0" layoutY="203.0">
          <children>
             <Text layoutX="6.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jogador 2" />
             <TextField fx:id="j2" layoutY="10.0" promptText="Nome para salvamento" />

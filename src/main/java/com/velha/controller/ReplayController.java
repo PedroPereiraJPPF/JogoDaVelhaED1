@@ -42,8 +42,6 @@ public class ReplayController {
             ArchiveManager<Partida> arquiveManager = new ArchiveManager<>();
             SinglyLinkedList<Partida> partidas = arquiveManager.lerBinario("Partidas.bin");
 
-            partidas.iterate();
-
             ObservableList<Partida> items = FXCollections.observableArrayList();
 
             while(!partidas.isEmpty()) {
@@ -68,8 +66,12 @@ public class ReplayController {
 
             avancarJogada.setOnAction(event -> {
                 try {
-                    this.updateButtons(this.movimentos.get(++this.movimentoAtual));
-                } catch (Exception e) {}
+                    if (!((this.movimentoAtual + 1) >= movimentos.size())) {
+                        this.updateButtons(this.movimentos.get(++this.movimentoAtual));
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             });
         } catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
@@ -89,6 +91,7 @@ public class ReplayController {
                 containerJogo.add(button, j, i);
                 buttons[i][j] = button;
                 buttons[i][j].setDisable(true);
+                buttons[i][j].setOpacity(0.99);
             }
         }
     }
@@ -99,6 +102,7 @@ public class ReplayController {
                 int value = moves[i][j];
                 buttons[i][j].setText(value == 0 ? "" : (value == 1 ? "O" : "X"));
                 buttons[i][j].setDisable(value != 0);
+                buttons[i][j].setOpacity(0.99);
             }
         }
     }

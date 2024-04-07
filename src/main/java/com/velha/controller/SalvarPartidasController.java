@@ -151,8 +151,6 @@ public class SalvarPartidasController {
 
             partidasList.addLast(partida);
 
-            partidasList.iterate();
-
             tableManager.salvarEmBinario(partidasList, "Partidas.bin");
             
         } catch (Exception e) {
