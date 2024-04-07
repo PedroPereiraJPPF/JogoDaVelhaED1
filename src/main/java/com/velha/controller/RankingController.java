@@ -40,6 +40,7 @@ public class RankingController {
 
             for (int i = 0; i < jogadores.size(); i++) {
                 if (!jogadores.peek().getNome().equals("reservado1" ) || !jogadores.peek().getNome().equals("reservado2")) {
+                    jogadores.peek().setColocacao(i+1);
                     tabela.getItems().add(jogadores.remove());
                 }
             }
