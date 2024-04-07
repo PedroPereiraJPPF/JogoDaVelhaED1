@@ -3,7 +3,7 @@ package com.velha.Entities;
 import java.io.Serializable;
 import java.util.List;
 
-import com.velha.collections.collections_Certas.list.DoubleLinkedList;
+import com.velha.collections.Collections_Certas.list.DoubleLinkedList;
 import com.velha.collections.stack.LinkedStack;
 import com.velha.collections.stack.StackInterface;
 

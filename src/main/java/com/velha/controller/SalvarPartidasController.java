@@ -7,8 +7,8 @@ import com.velha.Entities.Jogador;
 import com.velha.Entities.Partida;
 import com.velha.Entities.Table;
 import com.velha.arquivo.ArchiveManager;
-import com.velha.collections.collections_Certas.stack.InterfacePilha;
-import com.velha.collections.collections_Certas.stack.PilhaEncadeada;
+import com.velha.collections.Collections_Certas.stack.InterfacePilha;
+import com.velha.collections.Collections_Certas.stack.PilhaEncadeada;
 import com.velha.collections.linkedList.singlyLinkedList.SinglyLinkedList;
 
 import javafx.fxml.FXML;
@@ -82,10 +82,10 @@ public class SalvarPartidasController {
     @FXML TextField j2;
     
     public void submit() {
-        if (j1.getText() == "") {
+        if (j1.getText().isEmpty()) {
             j1.setText("reservado1");
         }
-        if (j2.getText() == "") {
+        if (j2.getText().isEmpty()) {
             j2.setText("reservado2");
         }
 
@@ -141,15 +141,17 @@ public class SalvarPartidasController {
 
     public void salvarPartida() {
         ArchiveManager<Partida> tableManager = new ArchiveManager<>();
-        
+
         Partida partida = new Partida(table, j1.getText(), j2.getText());
 
         SinglyLinkedList<Partida> partidasList = new SinglyLinkedList<>();
         
-        try {
+        try {   
             partidasList = tableManager.lerBinario("Partidas.bin");
 
             partidasList.addLast(partida);
+
+            partidasList.iterate();
 
             tableManager.salvarEmBinario(partidasList, "Partidas.bin");
             

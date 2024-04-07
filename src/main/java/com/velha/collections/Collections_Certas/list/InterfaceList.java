@@ -1,4 +1,4 @@
-package com.velha.collections.collections_Certas.list;
+package com.velha.collections.Collections_Certas.list;
 
 import java.util.List;
 

@@ -56,7 +56,12 @@ public class Jogador implements Serializable{
         partidasJogadas++;
     }
 
-    public boolean equals(Jogador obj) {
-        return this.nome == obj.getNome();
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Jogador) {
+            return this.nome == ((Jogador) obj).getNome();
+        }
+
+        return super.equals(obj);
     }
 }

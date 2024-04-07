@@ -39,7 +39,7 @@ public class RankingController {
             QueueInterface<Jogador> jogadores = arquivo.toQueueInterface();
 
             for (int i = 0; i < jogadores.size(); i++) {
-                if (jogadores.peek().getNome() != "reservado1" || jogadores.peek().getNome() != "reservado2") {
+                if (!jogadores.peek().getNome().equals("reservado1" ) || !jogadores.peek().getNome().equals("reservado2")) {
                     tabela.getItems().add(jogadores.remove());
                 }
             }

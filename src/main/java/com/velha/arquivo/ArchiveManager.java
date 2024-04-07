@@ -18,8 +18,12 @@ public class ArchiveManager<T> {
         
         @SuppressWarnings("unchecked")
         public SinglyLinkedList<T> lerBinario(String nomeArquivo) throws IOException, ClassNotFoundException {
-            try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(nomeArquivo))) {
+            try {
+                ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(nomeArquivo));
+
                 return (SinglyLinkedList<T>) inputStream.readObject();
+            } catch (Exception e) {
+                return new SinglyLinkedList<T>();
             }
         }
 }

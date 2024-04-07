@@ -1,4 +1,4 @@
-package com.velha.collections.collections_Certas.fila;
+package com.velha.collections.Collections_Certas.fila;
 
 public interface InterfaceFila <T>{
 	void add(T element) throws Exception;
