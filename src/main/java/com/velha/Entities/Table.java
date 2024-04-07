@@ -13,7 +13,6 @@ public class Table implements Serializable {
     private int actualPlayer; // esse valor pode ser um ou zero 
     private int turn;
     private LinkedStack<Integer[][]> playsStack;
-    private DoubleLinkedList<Integer[][]> replayList;
 
     public Table(int n) {
         this.actualPlayer = this.turn = 0;
@@ -96,7 +95,6 @@ public class Table implements Serializable {
     public void undoMove() {
         try {
             this.tableMatriz = playsStack.pop();
-            replayList.removeLast();
             this.turn--;
             this.changePlayer();
         } catch (Exception e) {
@@ -114,7 +112,6 @@ public class Table implements Serializable {
             Integer[][] copy = this.copyState(this.tableMatriz);
 
             playsStack.push(copy);
-            replayList.add(copy);
         } catch (Exception e) {
             e.printStackTrace();
         }
