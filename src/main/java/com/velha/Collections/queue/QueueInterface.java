@@ -1,7 +1,5 @@
 package com.velha.collections.queue;
 
-import java.io.Serializable;
-
 public interface QueueInterface<T> {
     void add(T element) throws Exception;
     T remove() throws Exception;

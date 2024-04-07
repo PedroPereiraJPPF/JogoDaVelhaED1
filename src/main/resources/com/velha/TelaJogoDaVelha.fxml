@@ -9,6 +9,20 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="325.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.velha.controller.JogoDaVelhaController">
    <children>
+      <Pane layoutX="36.0" layoutY="-5.0" prefHeight="410.0" prefWidth="35.0" style="-fx-background-color: #9e22ff; -fx-border-color: #000000;" />
+      <Pane layoutX="106.0" layoutY="-5.0" prefHeight="410.0" prefWidth="35.0" style="-fx-background-color: #9e22ff; -fx-border-color: #000000;" />
+      <Pane layoutX="-4.0" layoutY="32.0" prefHeight="35.0" prefWidth="334.0" style="-fx-background-color: #9e22ff; -fx-border-color: #000000;">
+         <children>
+            <Pane layoutX="41.0" layoutY="-3.0" prefHeight="42.0" prefWidth="33.0" style="-fx-background-color: #9e22ff;" />
+            <Pane layoutX="111.0" layoutY="-3.0" prefHeight="42.0" prefWidth="33.0" style="-fx-background-color: #9e22ff;" />
+         </children>
+      </Pane>
+      <Pane layoutX="-4.0" layoutY="116.0" prefHeight="35.0" prefWidth="334.0" style="-fx-background-color: #9e22ff; -fx-border-color: #000000;">
+         <children>
+            <Pane layoutX="41.0" layoutY="-3.0" prefHeight="42.0" prefWidth="33.0" style="-fx-background-color: #9e22ff;" />
+            <Pane layoutX="111.0" layoutY="-3.0" prefHeight="42.0" prefWidth="33.0" style="-fx-background-color: #9e22ff;" />
+         </children>
+      </Pane>
       <Button fx:id="desfazer" layoutX="61.0" layoutY="324.0" mnemonicParsing="false" onAction="#undo" prefHeight="25.0" prefWidth="67.0" text="Desfazer" />
       <Button fx:id="finalizar" layoutX="197.0" layoutY="324.0" mnemonicParsing="false" onAction="#end" prefHeight="25.0" prefWidth="67.0" text="Finalizar" />
       <Text fx:id="j1" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jogador 1" />
