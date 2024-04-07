@@ -1,12 +1,8 @@
 package com.velha.Entities;
 
 import java.io.Serializable;
-import java.util.List;
-
-import com.velha.collections.Collections_Certas.list.DoubleLinkedList;
 import com.velha.collections.linkedList.singlyLinkedList.SinglyLinkedList;
 import com.velha.collections.stack.LinkedStack;
-import com.velha.collections.stack.StackInterface;
 
 public class Table implements Serializable {
     private Integer[][] tableMatriz;

@@ -43,4 +43,10 @@ public class Partida implements Serializable{
     public Date getHorario() {
         return horario;
     }
+
+    @Override
+    public String toString()
+    {
+        return this.jogador1 + " vs " + this.jogador2;
+    }
 }

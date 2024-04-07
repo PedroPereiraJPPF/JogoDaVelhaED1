@@ -2,6 +2,7 @@ package com.velha.controller;
 
 import java.io.IOException;
 
+import com.velha.App;
 import com.velha.Entities.Partida;
 import com.velha.Entities.Table;
 import com.velha.arquivo.ArchiveManager;
@@ -57,9 +58,9 @@ public class ReplayController {
                 Partida partidaSelecionada = listaPartidas.getSelectionModel().getSelectedItem();
                 this.tableBuffer = partidaSelecionada.getTable();
                 movimentos = this.tableBuffer.replayMoves();
-                this.movimentoAtual = 0;
+                this.movimentoAtual = 1;
                 try {
-                    this.updateButtons(movimentos.get(movimentos.size()));
+                    this.updateButtons(movimentos.get(this.movimentoAtual));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }              
@@ -68,9 +69,7 @@ public class ReplayController {
             avancarJogada.setOnAction(event -> {
                 try {
                     this.updateButtons(this.movimentos.get(++this.movimentoAtual));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                } catch (Exception e) {}
             });
         } catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
@@ -104,4 +103,7 @@ public class ReplayController {
         }
     }
 
+    public void telaInicial() {
+        App.telaInicio();
+    }
 }
