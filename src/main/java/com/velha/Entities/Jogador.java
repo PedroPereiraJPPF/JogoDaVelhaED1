@@ -59,7 +59,7 @@ public class Jogador implements Serializable{
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Jogador) {
-            return this.nome == ((Jogador) obj).getNome();
+            return this.nome.equals(((Jogador) obj).getNome());
         }
 
         return super.equals(obj);
