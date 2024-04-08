@@ -20,8 +20,6 @@ public class Table implements Serializable {
                 this.tableMatriz[i][j] = 0;
             }
         }
-
-        this.saveNewPlay();
     }
 
     public Integer[][] getTableMatriz() {
@@ -73,14 +71,12 @@ public class Table implements Serializable {
         for (int i = 0; i < n; i++) {
             if ((this.tableMatriz[i][0] == value && this.tableMatriz[i][1] == value && this.tableMatriz[i][2] == value) ||
                 (this.tableMatriz[0][i] == value && this.tableMatriz[1][i] == value && this.tableMatriz[2][i] == value)) {
-                    this.saveNewPlay();
-                    return true;
+                        return true;
             }
         }
 
         if ((this.tableMatriz[0][0] == value && this.tableMatriz[1][1] == value && this.tableMatriz[2][2] == value) ||
             (this.tableMatriz[0][2] == value && this.tableMatriz[1][1] == value && this.tableMatriz[2][0] == value)) {
-                this.saveNewPlay();
                 return true;
         }
 
@@ -90,9 +86,15 @@ public class Table implements Serializable {
     // serve para voltar ao movimento anterior
     public void undoMove() {
         try {
-            this.tableMatriz = playsStack.pop();
+            if (matrizToString(tableMatriz).equals(matrizToString(playsStack.peek()))) {
+                playsStack.pop();
+                this.tableMatriz = playsStack.pop();
+            } else {
+                this.tableMatriz = playsStack.pop();
+            }
             this.turn--;
             this.changePlayer();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -103,7 +105,7 @@ public class Table implements Serializable {
     }
 
     // salva o estado atual da tabela
-    private void saveNewPlay() {
+    public void saveNewPlay() {
         try {
             Integer[][] copy = this.copyState(this.tableMatriz);
 
@@ -124,13 +126,15 @@ public class Table implements Serializable {
         return copy;
     }
 
-    // função para testes no terminal
-    public void renderTestTable() {
-        for (int i = 0; i < this.tableMatriz.length; i++) {
-            for (int j = 0; j < this.tableMatriz[i].length; j++) {
-                System.out.print(this.tableMatriz[i][j] + " ");
+    public String matrizToString(Integer[][] matriz) {
+        StringBuilder sb = new StringBuilder();
+        
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                sb.append(matriz[i][j]);
             }
-            System.out.println();
         }
+
+        return sb.toString();
     }
 }

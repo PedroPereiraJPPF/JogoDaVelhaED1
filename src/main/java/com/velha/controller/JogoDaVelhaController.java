@@ -49,14 +49,15 @@ public class JogoDaVelhaController {
         if (table.play(linha, coluna)) {
             updateButton(button);
 
-            // TODO Checar lógica do Finalizar com Pedro
             if (table.checkWinner()) {
                 table.addTurn();
+                table.saveNewPlay();
                 finalizar.setDisable(false);
                 showAlert("Jogador " + (table.getActualPlayer() == 0 ? "1" : "2") + " ganhou!");
                 blockAll();
             } else if (table.getTurn() == 8) {
                 table.addTurn();
+                table.saveNewPlay();
                 finalizar.setDisable(false);
                 showAlert("Jogo empatado!");
                 blockAll();

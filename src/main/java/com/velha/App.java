@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,8 +25,10 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         setStage(stage);
-        stage.setTitle("Jogo do Novo");
+        stage.setTitle("Jogo do Novo X");
         stage.show();
+        Image image = new Image("file:src/main/resources/com/velha/Images/icon.jpeg");
+        stage.getIcons().add(image);
         telaInicio();
     }
 

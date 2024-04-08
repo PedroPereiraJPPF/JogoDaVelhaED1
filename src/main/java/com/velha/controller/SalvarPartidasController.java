@@ -71,10 +71,14 @@ public class SalvarPartidasController {
 
         motivacional.setRotate(rotacao);
 
-        if (table.getTurn() > 7) {
-            motivacional.setText("Partida Disputada!!!");
-        } else {
-            motivacional.setText("Fácil Demais!!!");
+        int textoRandom = random.nextInt(8);
+        System.out.println(textoRandom);
+        String[] textinhos = {"Amassado!!!", "Fácil Demais!!!", "Fraco!!!", "Fraco!!!", "Partida Disputada!!!", "Partida Disputada!!!", "Partida Disputada!!!", "Ben'no esteve aqui"};
+
+        motivacional.setText(textinhos[textoRandom]);
+
+        if (textoRandom == 7) {
+            motivacional.setStrikethrough(true);
         }
     }
 
@@ -131,6 +135,7 @@ public class SalvarPartidasController {
             }
 
             sort(rankingList);
+            rankingList = invertList(rankingList);
 
             playerManager.salvarEmBinario(rankingList, "Ranking.bin");
 
@@ -189,8 +194,17 @@ public class SalvarPartidasController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return list;
+    }
+
+    public SinglyLinkedList<Jogador> invertList(SinglyLinkedList<Jogador> list) {
+        SinglyLinkedList<Jogador> aux = new SinglyLinkedList<>();
+
+        while(!list.isEmpty()) {
+            aux.addLast(list.removeLast());
+        }
+
+        return aux;
     }
 
     public void delete() {
